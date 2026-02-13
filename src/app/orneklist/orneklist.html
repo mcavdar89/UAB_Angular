@@ -1,0 +1,27 @@
+<p>orneklist works!</p>
+<!-- artık bu tarz directivler kullanılmıyor aşağıdaki yapıları kullanacağız -->
+<!-- <ul>
+  <li *ngFor="let urun of list()">
+    {{ urun.ad }} - {{ urun.fiyat }}
+  </li>
+</ul> -->
+
+<input type="text" placeholder="Ürün ara..." [(ngModel)]="aramaMetni" />
+
+<button (click)="ara()">Ara</button>
+
+
+
+
+
+
+<ul>
+  @for (item of list(); track item.id) {
+  @if(item.stok!>0) {
+  <li>{{ item.ad }} - {{ item.fiyat }} - {{item.stok}}<button (click)="sepeteEkle(item)">Sepete Ekle</button></li>
+  }
+  @else {
+  <li>{{ item.ad }} - {{ item.fiyat }} - Stokta yok</li>
+  }
+  }
+</ul>
