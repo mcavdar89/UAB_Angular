@@ -5,12 +5,13 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { CarDetail } from '../../components/car-detail/car-detail';
+import { CarForm } from '../../components/car-form/car-form';
 import { Car } from '../../models/car.model';
 import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-carlist',
-  imports: [TableModule, ButtonModule, CarDetail, DialogModule, InputTextModule, FormsModule],
+  imports: [TableModule, ButtonModule, CarDetail, DialogModule, InputTextModule, FormsModule, CarForm],
   templateUrl: './carlist.html',
   styleUrl: './carlist.scss',
 })
@@ -24,6 +25,7 @@ export class Carlist implements OnInit {
   searchText = signal('');
 
   visible = signal(false);
+  visibleForm = signal(false);
 
 
   filteredList = computed(() => {
@@ -46,6 +48,13 @@ export class Carlist implements OnInit {
     }, 100);
 
   }
+
+  aracDuzenle(arac: Car): void {
+    this.selectedCar.set(arac);
+    this.visibleForm.set(true);
+  }
+
+
 
 
 }
