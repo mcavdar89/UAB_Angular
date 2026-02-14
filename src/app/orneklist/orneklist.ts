@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 import { ListService } from './list.service';
 import { Urun } from './urun.model';
 
 @Component({
   selector: 'app-orneklist',
-  imports: [FormsModule],
+  imports: [FormsModule, TableModule, ButtonModule],
   templateUrl: './orneklist.html',
   styleUrl: './orneklist.scss',
 })
@@ -35,7 +37,7 @@ export class Orneklist implements OnInit {
 
       urun.stok = urun?.stok! - 1;
       // 1. yöntem signal güncelleme: this.list.set([...this.list()]);
-      this.list.set([...this.list()]);
+      // this.list.set([...this.list()]);
 
       //this.cdr.markForCheck(); // 2. yöntem manuel change detection tetikleme: markForCheck() metodu, Angular'ın değişiklik algılama mekanizmasını manuel olarak tetikler. Bu sayede stok bilgisindeki değişiklikler anında kullanıcı arayüzüne yansır.
 

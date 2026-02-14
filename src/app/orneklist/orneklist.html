@@ -6,6 +6,8 @@
   </li>
 </ul> -->
 
+
+<!-- 
 <input type="text" placeholder="Ürün ara..." [(ngModel)]="aramaMetni" />
 
 <button (click)="ara()">Ara</button>
@@ -24,4 +26,31 @@
   <li>{{ item.ad }} - {{ item.fiyat }} - Stokta yok</li>
   }
   }
-</ul>
+</ul> -->
+
+
+
+<div class="card">
+  <p-table [value]="list()" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+      <tr>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>Kategori</th>
+        <th>Stok</th>
+        <th>İşlem</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-product>
+      <tr>
+        <td>{{ product.ad }}</td>
+        <td>{{ product.fiyat }}</td>
+        <td>{{ product.kategori }}</td>
+        <td>{{ product.stok }}</td>
+        <td>
+          <button pButton type="button" label="Sepete Ekle" (click)="sepeteEkle(product)"
+            [disabled]="product.stok === 0"></button>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
