@@ -1,5 +1,5 @@
 import { Component, input, OnInit, signal } from '@angular/core';
-import { form, FormField, required } from '@angular/forms/signals';
+import { form, FormField, minLength, required } from '@angular/forms/signals';
 import { InputTextModule } from 'primeng/inputtext';
 import { Car } from '../../models/car.model';
 
@@ -16,6 +16,7 @@ export class CarForm implements OnInit {
     required(schemaPath.brandAd, { message: 'Brand is required' });
     required(schemaPath.modelAd, { message: 'Model is required' });
     required(schemaPath.plate, { message: 'Plate is required' });
+    minLength(schemaPath.modelAd, 4, { message: 'Model must be at least 4 characters long' });
 
     // email(schemaPath.plate, { message: 'Plate must be a valid email' });
 
