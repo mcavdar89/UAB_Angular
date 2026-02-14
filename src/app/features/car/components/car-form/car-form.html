@@ -1,43 +1,41 @@
 {{_car().brandAd}} - {{_car().modelAd}} - {{_car().plate}}
 
-<form>
-  <label>Brand
-    <input type="text" pInputText [formField]="form.brandAd" />
-  </label>
 
-  @if (form().touched() && form.brandAd().invalid()) {
-  <ul class="error-list">
-    @for (error of form.brandAd().errors(); track error) {
-    <li>{{ error.message }}</li>
-    }
-  </ul>
+<label>Brand
+  <input type="text" pInputText [formField]="form.brandAd" />
+</label>
+
+@if (form().touched() && form.brandAd().invalid()) {
+<ul class="error-list">
+  @for (error of form.brandAd().errors(); track error) {
+  <li>{{ error.message }}</li>
   }
+</ul>
+}
 
-  <br>
-  <label>Model
-    <input type="text" pInputText [formField]="form.modelAd" />
-  </label>
+<br>
+<label>Model
+  <input type="text" pInputText [formField]="form.modelAd" />
+</label>
 
-  @if (form().touched() && form.modelAd().invalid()) {
-  <ul class="error-list">
-    @for (error of form.modelAd().errors(); track error) {
-    <li>{{ error.message }}</li>
-    }
-  </ul>
+@if (form().touched() && form.modelAd().invalid()) {
+<ul class="error-list">
+  @for (error of form.modelAd().errors(); track error) {
+  <li>{{ error.message }}</li>
   }
+</ul>
+}
 
-  <br>
-  <label>Plate
-    <input type="text" pInputText [formField]="form.plate" />
-  </label>
-  @if (form().touched() && form.plate().invalid()) {
-  <ul class="error-list">
-    @for (error of form.plate().errors(); track error) {
-    <li>{{ error.message }}</li>
-    }
-  </ul>
+<br>
+<label>Plate
+  <input type="text" pInputText [formField]="form.plate" />
+</label>
+@if (form().touched() && form.plate().invalid()) {
+<ul class="error-list">
+  @for (error of form.plate().errors(); track error) {
+  <li>{{ error.message }}</li>
   }
-  <br>
-  <button pButton type="submit" label="Kaydet" (click)="kaydet()"></button>
-
-</form>
+</ul>
+}
+<br>
+<button pButton label="Kaydet" (click)="kaydet()"></button>

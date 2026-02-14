@@ -1,7 +1,7 @@
 <p-dialog header="Araç Detayı" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }">
 
 
-  @if (selectedCar()) {
+  @if (selectedCar() && visible()) {
   <app-car-detail [car]=" selectedCar()"></app-car-detail>
   }
 
@@ -10,8 +10,8 @@
 <p-dialog header="Araç Düzenle" [(visible)]="visibleForm" [modal]="true" [style]="{ width: '50vw' }">
 
 
-  @if (selectedCar()) {
-  <app-car-form [car]=" selectedCar()"></app-car-form>
+  @if (selectedCar()&& visibleForm()) {
+  <app-car-form [(car)]=" selectedCar" ></app-car-form>
   }
 
 </p-dialog>

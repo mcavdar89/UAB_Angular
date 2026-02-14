@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -16,6 +16,8 @@ import { CarService } from '../../services/car.service';
   styleUrl: './carlist.scss',
 })
 export class Carlist implements OnInit {
+
+  cdr = inject(ChangeDetectorRef);
 
   private readonly _carService = inject(CarService);
 
@@ -43,18 +45,22 @@ export class Carlist implements OnInit {
 
   aracGoster(arac: Car): void {
     this.visible.update(visible => !visible); // Dialog görünürlüğünü toggle yapıyoruz. Eğer dialog görünür değilse görünür yapar, görünür ise gizler.
-    setTimeout(() => {
-      this.selectedCar.set(arac);
-    }, 100);
+    // setTimeout(() => {
+    this.selectedCar.set(arac);
+    // }, 100);
 
   }
 
   aracDuzenle(arac: Car): void {
     this.selectedCar.set(arac);
+    console.log(this.selectedCar());
     this.visibleForm.set(true);
+
   }
 
+  updateCar(updatedCar: Car): void {
+    debugger;
+    this.selectedCar.update((car) => ({ ...updatedCar }));
 
-
-
+  }
 }
