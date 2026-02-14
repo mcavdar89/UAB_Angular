@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { CarDetail } from '../../components/car-detail/car-detail';
 import { Car } from '../../models/car.model';
@@ -7,7 +8,7 @@ import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-carlist',
-  imports: [TableModule, ButtonModule, CarDetail],
+  imports: [TableModule, ButtonModule, CarDetail, DialogModule],
   templateUrl: './carlist.html',
   styleUrl: './carlist.scss',
 })
@@ -18,6 +19,7 @@ export class Carlist implements OnInit {
   list = signal<Car[]>([]);
   selectedCar?: Car;
 
+  visible = signal(false);
 
   ngOnInit(): void {
     this._carService.getCarList().subscribe((cars) => {
@@ -27,6 +29,7 @@ export class Carlist implements OnInit {
 
 
   aracGoster(arac: Car): void {
+    this.visible.update(visible => !visible); // Dialog görünürlüğünü toggle yapıyoruz. Eğer dialog görünür değilse görünür yapar, görünür ise gizler.
     setTimeout(() => {
       this.selectedCar = arac;
     }, 100);

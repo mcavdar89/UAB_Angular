@@ -1,9 +1,11 @@
-@if (selectedCar) {
-
-<app-car-detail [car]="selectedCar"></app-car-detail>
-}
+<p-dialog header="Araç Detayı" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }">
 
 
+  @if (selectedCar) {
+  <app-car-detail [car]="selectedCar"></app-car-detail>
+  }
+
+</p-dialog>
 
 <div class="card">
   <p-table [value]="list()" [tableStyle]="{ 'min-width': '50rem' }">

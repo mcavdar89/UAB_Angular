@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Car } from '../../models/car.model';
 
 @Component({
@@ -8,7 +8,8 @@ import { Car } from '../../models/car.model';
   styleUrl: './car-detail.scss',
 })
 export class CarDetail implements OnInit {
-  @Input() car!: Car;
+  // @Input() car!: Car;
+  car = input<Car>();
 
 
 
