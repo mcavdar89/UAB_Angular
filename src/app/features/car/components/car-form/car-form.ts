@@ -1,10 +1,11 @@
 import { Component, input, OnInit, signal } from '@angular/core';
 import { form, FormField, required } from '@angular/forms/signals';
+import { InputTextModule } from 'primeng/inputtext';
 import { Car } from '../../models/car.model';
 
 @Component({
   selector: 'app-car-form',
-  imports: [FormField],
+  imports: [FormField, InputTextModule],
   templateUrl: './car-form.html',
   styleUrl: './car-form.scss',
 })
@@ -31,7 +32,7 @@ export class CarForm implements OnInit {
     if (this.form().valid()) {
       // Save logic here
     }
-    else{
+    else {
       console.log("Form is invalid. Please fill in all required fields.");
     }
   }

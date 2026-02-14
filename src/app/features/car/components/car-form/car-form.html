@@ -1,16 +1,18 @@
 {{_car().brandAd}} - {{_car().modelAd}} - {{_car().plate}}
 
 <form>
-  <label>Brand</label>
-  <input type="text" pInputText [formField]="form.brandAd" />
-
-  <label>Model</label>
-  <input type="text" pInputText [formField]="form.modelAd" />
-
-  <label>Plate</label>
-  <input type="text" pInputText [formField]="form.plate" />
-
-
+  <label>Brand
+    <input type="text" pInputText [formField]="form.brandAd" />
+  </label>
+  <br>
+  <label>Model
+    <input type="text" pInputText [formField]="form.modelAd" />
+  </label>
+  <br>
+  <label>Plate
+    <input type="text" pInputText [formField]="form.plate" />
+  </label>
+  <br>
   <button pButton type="submit" label="Kaydet" (click)="kaydet()"></button>
 
 </form>
