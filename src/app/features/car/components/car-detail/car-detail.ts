@@ -9,7 +9,7 @@ import { Car } from '../../models/car.model';
 })
 export class CarDetail implements OnInit {
   // @Input() car!: Car;
-  car = input<Car>();
+  car = input.required<Car>();
 
 
 
