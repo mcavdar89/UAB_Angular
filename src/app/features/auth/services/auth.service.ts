@@ -15,11 +15,18 @@ export class AuthService {
   );
 
   token = computed(() => this._token());
-  isAuthenticated = computed(() => !!this.token());
-
-
+  isAuthenticated = computed(() => !!this._token());
 
   http = inject(HttpClient);
+
+  constructor() {
+    window.addEventListener('storage', (event) => {
+      if (event.key === this.tokenKey) {
+        this._token.set(event.newValue);
+      }
+    });
+  }
+
 
   signIn(loginModel: LoginModel): Observable<ResponseModel<string>> {
 
