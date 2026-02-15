@@ -1,0 +1,35 @@
+<p-card [style]="{ width: '25rem' }">
+
+  <label>E-Posta
+    <input type="text" pInputText [formField]="form.ePosta" />
+  </label>
+
+  @if (form().touched() && form.ePosta().invalid()) {
+  <ul class="error-list">
+    @for (error of form.ePosta().errors(); track error) {
+    <li>{{ error.message }}</li>
+    }
+  </ul>
+  }
+
+  <br>
+
+  <label>Şifre
+    <input type="password" pInputText [formField]="form.password" />
+  </label>
+
+  @if (form().touched() && form.password().invalid()) {
+  <ul class="error-list">
+    @for (error of form.password().errors(); track error) {
+    <li>{{ error.message }}</li>
+    }
+  </ul>
+  }
+
+  <br>
+
+
+  <button pButton label="Giriş" (click)="setLogin()"></button>
+
+
+</p-card>
