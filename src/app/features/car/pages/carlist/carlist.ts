@@ -60,7 +60,9 @@ export class Carlist implements OnInit {
 
   updateCar(updatedCar: Car): void {
     debugger;
-    this.selectedCar.update((car) => ({ ...updatedCar }));
+    console.log('Selected Car:', this.selectedCar());
+    this.list.update((cars) => cars.map(car => car.id === updatedCar.id ? updatedCar : car));
+    // this.selectedCar.update((car) => ({ ...updatedCar }));
 
   }
 }

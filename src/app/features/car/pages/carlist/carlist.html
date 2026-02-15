@@ -11,7 +11,7 @@
 
 
   @if (selectedCar()&& visibleForm()) {
-  <app-car-form [(car)]=" selectedCar" ></app-car-form>
+  <app-car-form [car]=" selectedCar()" (carChange)="updateCar($event)"></app-car-form>
   }
 
 </p-dialog>
@@ -22,7 +22,7 @@
 <br>
 <br>
 <div class="card">
-  <p-table [value]="filteredList()" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="list()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template #header>
       <tr>
         <th>Ürün Adı</th>
