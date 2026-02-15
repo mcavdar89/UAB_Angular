@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
@@ -36,6 +37,10 @@ export class Carlist implements OnInit {
   });
 
 
+  route = inject(Router);
+
+
+
   ngOnInit(): void {
     this._carService.getCarList().subscribe((cars) => {
       this.list.set(cars);
@@ -57,6 +62,14 @@ export class Carlist implements OnInit {
     this.visibleForm.set(true);
 
   }
+
+  aracDuzenleForm(id: number): void {
+    //kontrol edip id varsa form sayfasına yönlendireceğiz
+
+    this.route.navigate(['car/form', id]);
+
+  }
+
 
   updateCar(updatedCar: Car): void {
     debugger;
