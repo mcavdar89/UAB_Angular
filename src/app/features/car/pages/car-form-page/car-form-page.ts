@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { map } from 'rxjs';
 import { Car } from '../../models/car.model';
+import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-car-form-page',
@@ -33,6 +34,9 @@ export class CarFormPage implements OnInit {
 
   });
 
+
+  service = inject(CarService);
+
   route = inject(ActivatedRoute);
   //snapshot için kullanılır
   //id :number = 0;
@@ -49,6 +53,17 @@ export class CarFormPage implements OnInit {
   ngOnInit(): void {
     //artıkbu yapı değişti signla ile alacağım
     // this.id = Number(this.route.snapshot.paramMap.get('id'));
+
+    debugger;
+
+    this.service.getCarById(this.id()!).subscribe(response => {
+      if (response.isSuccess && response.data) {
+        this.car.set(response.data);
+      }
+    });
+
+
+
 
   }
 
