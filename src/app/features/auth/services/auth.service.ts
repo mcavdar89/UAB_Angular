@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { ResponseModel } from '../../shared/models/response.model';
+import { ResponseModel } from '../../../shared/models/response.model';
 import { LoginModel } from '../models/login.model';
 
 @Injectable({
@@ -45,6 +45,7 @@ export class AuthService {
 
   private setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
+    this._token.set(token);
   };
 
 
