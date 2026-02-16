@@ -27,7 +27,9 @@ export class App {
 
       if (!this.isLogin()) {
         this.route.navigate(['/auth', 'login']);
-
+      }
+      else if (this.route.url === '/auth/login') {
+        this.route.navigate(['/car', 'list']);
       }
 
     });

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -5,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { TitleCasePipe } from '../../../../shared/pipes/title-case-pipe';
 import { CarDetail } from '../../components/car-detail/car-detail';
 import { CarForm } from '../../components/car-form/car-form';
 import { Car } from '../../models/car.model';
@@ -12,11 +14,29 @@ import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-carlist',
-  imports: [TableModule, ButtonModule, CarDetail, DialogModule, InputTextModule, FormsModule, CarForm],
+  imports: [
+    TableModule,
+    ButtonModule,
+    CarDetail,
+    DialogModule,
+    InputTextModule,
+    FormsModule,
+    CarForm,
+    // JsonPipe,
+    DatePipe,
+    TitleCasePipe
+  ],
   templateUrl: './carlist.html',
   styleUrl: './carlist.scss',
 })
 export class Carlist implements OnInit {
+
+
+  kelime = 'ahmeT sınıfa Geldi ve girdi';
+
+  date = new Date();
+
+
 
   cdr = inject(ChangeDetectorRef);
 

@@ -1,20 +1,12 @@
-<p-dialog header="Araç Detayı" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }">
+{{ kelime | titleCase:'ve' }}
+{{ date | date:'dd/MM/yyyy' }}
 
 
-  @if (selectedCar() && visible()) {
-  <app-car-detail [car]=" selectedCar()"></app-car-detail>
-  }
-
-</p-dialog>
-
-<p-dialog header="Araç Düzenle" [(visible)]="visibleForm" [modal]="true" [style]="{ width: '50vw' }">
 
 
-  @if (selectedCar()&& visibleForm()) {
-  <app-car-form [car]=" selectedCar()" (carChange)="updateCar($event)"></app-car-form>
-  }
 
-</p-dialog>
+
+
 
 
 
@@ -45,3 +37,22 @@
     </ng-template>
   </p-table>
 </div>
+
+
+<p-dialog header="Araç Detayı" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }">
+
+
+  @if (selectedCar() && visible()) {
+  <app-car-detail [car]=" selectedCar()"></app-car-detail>
+  }
+
+</p-dialog>
+
+<p-dialog header="Araç Düzenle" [(visible)]="visibleForm" [modal]="true" [style]="{ width: '50vw' }">
+
+
+  @if (selectedCar()&& visibleForm()) {
+  <app-car-form [car]=" selectedCar()" (carChange)="updateCar($event)"></app-car-form>
+  }
+
+</p-dialog>
