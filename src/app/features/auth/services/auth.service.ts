@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { jwtDecode } from "jwt-decode";
 import { Observable, tap } from 'rxjs';
 import { ResponseModel } from '../../../shared/models/response.model';
 import { LoginModel } from '../models/login.model';
@@ -42,11 +43,55 @@ export class AuthService {
 
   }
 
+  getPersmissions(): string[] {
+
+    let token = this.getTokenToJson();
+    debugger;
+
+    if (token) {
+      return token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'].split(',') as string[];
+
+      // Decode the token to extract permissions
+
+
+    }
+
+
+
+    return [];
+  }
+
+
+  private getTokenToJson(): any {
+
+    debugger;
+    let token = this._token();
+
+    if (token) {
+      try {
+        return jwtDecode(token);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return null;
+      }
+    }
+
+    return null;
+
+
+  }
+
+
+
 
   private setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
     this._token.set(token);
   };
+
+
+
+
 
 
 

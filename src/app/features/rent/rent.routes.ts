@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
+import { permissionGuard } from '../../core/guard/permission-guard';
 
-export const carRoutes: Routes = [
+export const rentRoutes: Routes = [
   {
     path: '',
-    // canActivate: [authGuard],
+    canActivate: [permissionGuard(['admin', 'rent-add'])],
     loadComponent: () => import('./pages/rent-form/rent-form').then(m => m.RentForm)
+
   },
 
 ];
