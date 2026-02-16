@@ -1,1 +1,13 @@
-<p>rent-form works!</p>
+<label>Car
+  <p-select [options]="carList()" [formField]="rentForm.carId" optionLabel="name" placeholder="Select a Car"
+    class="w-full md:w-56" />
+  <input type="text" pInputText [formField]="rentForm.carId" />
+</label>
+
+@if (form().touched() && form.brandAd().invalid()) {
+<ul class="error-list">
+  @for (error of form.brandAd().errors(); track error) {
+  <li>{{ error.message }}</li>
+  }
+</ul>
+}
