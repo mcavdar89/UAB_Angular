@@ -1,9 +1,9 @@
 
 export interface RentModel {
-  id: number;
-  carId: number;
-  userId: number;
-  rentDate: Date;
-  returnDate: Date;
-  amount: number;
+  id: number | any;
+  carId: number | any;
+  userId: number | any;
+  rentDate: Date | any;
+  returnDate: Date | any;
+  amount: number | any;
 }

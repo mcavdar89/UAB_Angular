@@ -1,13 +1,15 @@
-<label>Car
-  <p-select [options]="carList()" [formField]="rentForm.carId" optionLabel="name" placeholder="Select a Car"
-    class="w-full md:w-56" />
-  <input type="text" pInputText [formField]="rentForm.carId" />
-</label>
+<div style="max-width: 720px; padding: 15px;">
+  <uab-dropdown [form]="rentForm" fieldName="carId" label="Car :" [options]="carList()" labelName="modelAd"
+    valueName="id"></uab-dropdown>
 
-@if (form().touched() && form.brandAd().invalid()) {
-<ul class="error-list">
-  @for (error of form.brandAd().errors(); track error) {
-  <li>{{ error.message }}</li>
-  }
-</ul>
-}
+  <uab-date-picker [form]="rentForm" fieldName="rentDate" label="Rent Date :"></uab-date-picker>
+  <uab-date-picker [form]="rentForm" fieldName="returnDate" label="Return Date :"></uab-date-picker>
+
+  <button pButton label="Save"></button>
+
+  {{ rent() | json }}
+
+</div>
+
+
+<!-- <input type="text" pInputText [formField]="rentForm.carId" /> -->

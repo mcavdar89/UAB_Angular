@@ -1,0 +1,15 @@
+<label for="">{{label}}</label>
+<br>
+<div class="form-floating">
+
+
+
+  <select [formField]="form()[fieldName]" class="form-select">
+    @for (item of options(); track $index) {
+    <option [value]="item[valueName]">{{ item[labelName] }}</option>
+    }
+    <!-- @for (item of options(); track item[valueName]) {} -->
+
+
+  </select>
+</div>
