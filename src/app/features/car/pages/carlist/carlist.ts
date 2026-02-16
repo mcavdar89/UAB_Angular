@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { HighlightDirective } from '../../../../shared/directives/highlight-directive';
 import { TitleCasePipe } from '../../../../shared/pipes/title-case-pipe';
 import { CarDetail } from '../../components/car-detail/car-detail';
 import { CarForm } from '../../components/car-form/car-form';
@@ -24,7 +25,8 @@ import { CarService } from '../../services/car.service';
     CarForm,
     // JsonPipe,
     DatePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    HighlightDirective
   ],
   templateUrl: './carlist.html',
   styleUrl: './carlist.scss',
@@ -36,6 +38,7 @@ export class Carlist implements OnInit {
 
   date = new Date();
 
+  backgroundColor = signal('lightblue');
 
 
   cdr = inject(ChangeDetectorRef);
@@ -62,6 +65,13 @@ export class Carlist implements OnInit {
 
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.backgroundColor.set('lightgreen');
+    }, 1000);
+
+
+
     this._carService.getCarList().subscribe((cars) => {
       this.list.set(cars);
     });

@@ -25,7 +25,7 @@
       </tr>
     </ng-template>
     <ng-template #body let-item>
-      <tr>
+      <tr [appHighlight]="backgroundColor()" []>
         <td>{{ item.brandAd }}</td>
         <td>{{ item.modelAd }}</td>
         <td>{{ item.plate }}</td>
