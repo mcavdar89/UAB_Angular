@@ -29,7 +29,7 @@ export class App {
         this.route.navigate(['/auth', 'login']);
       }
       else if (this.route.url === '/auth/login') {
-        this.route.navigate(['/car', 'list']);
+        this.route.navigate(['/lesson']);
       }
 
     });

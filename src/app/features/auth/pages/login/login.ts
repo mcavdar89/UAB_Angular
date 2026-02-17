@@ -49,9 +49,9 @@ export class Login implements OnInit {
         if (response.isSuccess) {
           console.log('Login successful:', response.data);
 
-          setTimeout(() => {
-            this.route.navigate(['/car/list']);
-          }, 2000);
+          // setTimeout(() => {
+          //   this.route.navigate(['/car/list']);
+          // }, 2000);
 
 
           // Handle successful login, e.g., navigate to dashboard, store token, etc.
