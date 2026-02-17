@@ -1,7 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { LessonStore } from '../../../../core/ngRx/actions/stores/lesson.store';
 import { LessonModel } from '../../models/lesson.model';
 
 @Component({
@@ -17,6 +18,11 @@ export class LessonAdd implements OnInit {
   form = form(this.lessonInit);
 
 
+  // store = inject(Store);
+  readonly store = inject(LessonStore);
+
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -26,7 +32,17 @@ export class LessonAdd implements OnInit {
 
   add(): void {
     console.log(this.lessonInit());
-    this.lessonInit.set({ id: 0, name: '', credit: 0, days: '' });
+
+    const newLesson = { ...this.lessonInit() };
+    // this.store.dispatch(addLesson(newLesson));
+    // patchState(this.store, ({ lessons }) => ({
+    //   lessons: [...lessons, newLesson]
+    // }));
+
+    this.store.addLesson(newLesson);
+
+
+    // this.lessonInit.set({ id: 0, name: '', credit: 0, days: '' });
 
   }
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { LessonStore } from '../../../../core/ngRx/actions/stores/lesson.store';
 
 @Component({
   selector: 'app-lesson-count',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './lesson-count.scss',
 })
 export class LessonCount {
+
+  store = inject(LessonStore);
+  count = computed(() => this.store.lessons().length
+  );
+
+
 
 }
